@@ -1,0 +1,162 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://shaders/refs/glitch_effect.shader" type="Shader" id=1]
+[ext_resource path="res://shaders/refs/voxel.shader" type="Shader" id=2]
+[ext_resource path="res://scripts/freelook.gd" type="Script" id=3]
+[ext_resource path="res://shaders/refs/diff.shader" type="Shader" id=4]
+[ext_resource path="res://shaders/refs/society.shader" type="Shader" id=5]
+[ext_resource path="res://shaders/modified_voxel.shader" type="Shader" id=6]
+[ext_resource path="res://scripts/toggle_panel.gd" type="Script" id=7]
+[ext_resource path="res://scripts/viewport_resizer.gd" type="Script" id=8]
+[ext_resource path="res://assets/default.theme" type="Theme" id=9]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 1 )
+shader_param/shake_power = 0.03
+shader_param/shake_rate = 0.2
+shader_param/shake_speed = 5.0
+shader_param/shake_block_size = 30.5
+shader_param/shake_color_rate = 0.01
+
+[sub_resource type="PlaneMesh" id=1]
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 4 )
+shader_param/resolution = Vector2( 1, 1 )
+shader_param/time = null
+shader_param/mouse = null
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 5 )
+shader_param/resolution = Vector2( 1, 1 )
+shader_param/time = null
+shader_param/mouse = null
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 2 )
+shader_param/resolution = Vector2( 1, 1 )
+shader_param/mouse = null
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 6 )
+shader_param/resolution = Vector2( 1, 1 )
+shader_param/mouse = null
+
+[node name="Spatial" type="Spatial"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="CanvasLayer"]
+material = SubResource( 2 )
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="CanvasLayer/ViewportContainer"]
+size = Vector2( 1024, 600 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Camera" type="Camera" parent="CanvasLayer/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2 )
+current = true
+script = ExtResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
+mesh = SubResource( 1 )
+skeleton = NodePath("../../../..")
+material/0 = null
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+self_modulate = Color( 1, 1, 1, 0.160784 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 32.0
+margin_right = -64.0
+margin_bottom = -40.0
+theme = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel"]
+anchor_left = 0.071
+anchor_top = 0.061
+anchor_right = 0.929
+anchor_bottom = 0.939
+margin_left = 0.383999
+margin_top = -0.208004
+margin_right = -0.384033
+margin_bottom = 0.207977
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Panel/ScrollContainer"]
+margin_right = 192.0
+margin_bottom = 192.0
+columns = 3
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Panel/ScrollContainer/GridContainer"]
+visible = false
+material = SubResource( 8 )
+margin_right = 192.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 192, 192 )
+rect_pivot_offset = Vector2( -32, 72 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Panel/ScrollContainer/GridContainer"]
+visible = false
+material = SubResource( 5 )
+margin_right = 192.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 192, 192 )
+rect_pivot_offset = Vector2( 96, 96 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Panel/ScrollContainer/GridContainer"]
+visible = false
+material = SubResource( 6 )
+margin_right = 192.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 192, 192 )
+rect_pivot_offset = Vector2( -32, 72 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="item" type="ColorRect" parent="CanvasLayer/Panel/ScrollContainer/GridContainer"]
+material = SubResource( 7 )
+margin_right = 192.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 192, 192 )
+rect_pivot_offset = Vector2( -32, 72 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 120.0
+margin_bottom = 48.0
+focus_mode = 0
+theme = ExtResource( 9 )
+shortcut_in_tooltip = false
+enabled_focus_mode = 0
+text = "Show Canvas"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="on_button_pressed"]
