@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/pinky_albedo.png-fca181b5625b56678c8b042cf8812386.s3tc.stex"
-path.etc2="res://.import/pinky_albedo.png-fca181b5625b56678c8b042cf8812386.etc2.stex"
+path.s3tc="res://.import/pinky_depth.png-3d48e0a886fbfff124c2f268fb5a2fa0.s3tc.stex"
+path.etc2="res://.import/pinky_depth.png-3d48e0a886fbfff124c2f268fb5a2fa0.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://materials/pinky/pinky_albedo.png"
-dest_files=[ "res://.import/pinky_albedo.png-fca181b5625b56678c8b042cf8812386.s3tc.stex", "res://.import/pinky_albedo.png-fca181b5625b56678c8b042cf8812386.etc2.stex" ]
+source_file="res://assets/materials/pinky/pinky_depth.png"
+dest_files=[ "res://.import/pinky_depth.png-3d48e0a886fbfff124c2f268fb5a2fa0.s3tc.stex", "res://.import/pinky_depth.png-3d48e0a886fbfff124c2f268fb5a2fa0.etc2.stex" ]
 
 [params]
 
@@ -25,7 +25,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

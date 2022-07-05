@@ -1,43 +1,42 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://shaders/refs/glitch_effect.shader" type="Shader" id=1]
-[ext_resource path="res://shaders/refs/voxel.shader" type="Shader" id=2]
+[ext_resource path="res://assets/materials/viewport_texture.tres" type="Texture" id=1]
+[ext_resource path="res://assets/shaders/canvas/voxel.shader" type="Shader" id=2]
 [ext_resource path="res://scripts/freelook.gd" type="Script" id=3]
-[ext_resource path="res://shaders/refs/diff.shader" type="Shader" id=4]
-[ext_resource path="res://shaders/refs/society.shader" type="Shader" id=5]
-[ext_resource path="res://shaders/modified_voxel.shader" type="Shader" id=6]
+[ext_resource path="res://assets/shaders/canvas/diff.shader" type="Shader" id=4]
+[ext_resource path="res://assets/shaders/canvas/society.shader" type="Shader" id=5]
+[ext_resource path="res://assets/shaders/modified_voxel.shader" type="Shader" id=6]
 [ext_resource path="res://scripts/toggle_panel.gd" type="Script" id=7]
 [ext_resource path="res://scripts/viewport_resizer.gd" type="Script" id=8]
 [ext_resource path="res://assets/default.theme" type="Theme" id=9]
-[ext_resource path="res://shaders/refs/mosaic.shader" type="Shader" id=10]
-[ext_resource path="res://shaders/refs/outline.shader" type="Shader" id=11]
-[ext_resource path="res://materials/pinky/pinky.tres" type="Material" id=12]
-[ext_resource path="res://shaders/refs/shield.shader" type="Shader" id=13]
+[ext_resource path="res://assets/shaders/spatial/mosaic.shader" type="Shader" id=10]
+[ext_resource path="res://assets/shaders/spatial/outline.shader" type="Shader" id=11]
+[ext_resource path="res://assets/materials/pinky/pinky.tres" type="Material" id=12]
+[ext_resource path="res://assets/shaders/spatial/shield.shader" type="Shader" id=13]
+[ext_resource path="res://assets/shaders/canvas/glitch_effect.shader" type="Shader" id=14]
 
 [sub_resource type="ShaderMaterial" id=2]
-shader = ExtResource( 1 )
-shader_param/shake_power = 0.03
-shader_param/shake_rate = 0.2
-shader_param/shake_speed = 5.0
-shader_param/shake_block_size = 30.5
-shader_param/shake_color_rate = 0.01
 
 [sub_resource type="PlaneMesh" id=1]
 
-[sub_resource type="ShaderMaterial" id=12]
-shader = ExtResource( 11 )
-shader_param/outline_color = Color( 0, 0, 0, 1 )
-shader_param/luma_coef = 0.1
-shader_param/color_coef = 0.1
-shader_param/depth_coef = 0.8
-shader_param/cutoff = 0.2
+[sub_resource type="ShaderMaterial" id=18]
+shader = ExtResource( 13 )
+shader_param/speed = Vector2( 0.2, 0.2 )
+shader_param/barrier_color = Color( 0.05, 0.8, 1, 1 )
+shader_param/barrier_force = 1.0
+shader_param/barrier_noise_force = 0.3
+shader_param/barrier_fog_noise_force = 0.01
 
 [sub_resource type="CubeMesh" id=11]
-material = SubResource( 12 )
+material = SubResource( 18 )
 
 [sub_resource type="ShaderMaterial" id=10]
-shader = ExtResource( 10 )
-shader_param/size = 20.0
+shader = ExtResource( 13 )
+shader_param/speed = Vector2( 0.2, 0.2 )
+shader_param/barrier_color = Color( 0.05, 0.8, 1, 1 )
+shader_param/barrier_force = 1.0
+shader_param/barrier_noise_force = 0.3
+shader_param/barrier_fog_noise_force = 0.01
 
 [sub_resource type="ArrayMesh" id=13]
 surfaces/0 = {
@@ -52,13 +51,9 @@ surfaces/0 = {
 "vertex_count": 24
 }
 
-[sub_resource type="ShaderMaterial" id=14]
-shader = ExtResource( 13 )
-shader_param/speed = Vector2( 0.2, 0.2 )
-shader_param/barrier_color = Color( 0.05, 0.8, 1, 1 )
-shader_param/barrier_force = 1.0
-shader_param/barrier_noise_force = 0.3
-shader_param/barrier_fog_noise_force = 0.01
+[sub_resource type="ShaderMaterial" id=19]
+shader = ExtResource( 10 )
+shader_param/size = 20.0
 
 [sub_resource type="ArrayMesh" id=15]
 surfaces/0 = {
@@ -73,13 +68,13 @@ surfaces/0 = {
 "vertex_count": 24
 }
 
-[sub_resource type="ShaderMaterial" id=16]
-shader = ExtResource( 13 )
-shader_param/speed = Vector2( 0.2, 0.2 )
-shader_param/barrier_color = Color( 0.05, 0.8, 1, 1 )
-shader_param/barrier_force = 1.0
-shader_param/barrier_noise_force = 0.3
-shader_param/barrier_fog_noise_force = 0.01
+[sub_resource type="ShaderMaterial" id=20]
+shader = ExtResource( 11 )
+shader_param/outline_color = Color( 0, 0, 0, 1 )
+shader_param/luma_coef = 0.1
+shader_param/color_coef = 0.1
+shader_param/depth_coef = 0.8
+shader_param/cutoff = 0.2
 
 [sub_resource type="CubeMesh" id=17]
 material = ExtResource( 12 )
@@ -100,6 +95,14 @@ shader_param/mouse = null
 shader = ExtResource( 2 )
 shader_param/resolution = Vector2( 1, 1 )
 shader_param/mouse = null
+
+[sub_resource type="ShaderMaterial" id=21]
+shader = ExtResource( 14 )
+shader_param/shake_power = 0.03
+shader_param/shake_rate = 0.2
+shader_param/shake_speed = 5.0
+shader_param/shake_block_size = 30.5
+shader_param/shake_color_rate = 0.01
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 6 )
@@ -141,20 +144,20 @@ material/0 = SubResource( 10 )
 
 [node name="MeshInstance" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport/Block1"]
 mesh = SubResource( 13 )
-material/0 = SubResource( 14 )
+material/0 = SubResource( 19 )
 
 [node name="Block2" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
-transform = Transform( 1.60105, 0, 0, 0, 1.60105, 0, 0, 0, 1.60105, 9.45263, 4.84397, 4.18697 )
+transform = Transform( 1.60105, 0, 0, 0, 1.60105, 0, 0, 0, 1.60105, 9.45263, 3.84397, 4.18697 )
 mesh = SubResource( 11 )
 material/0 = null
 
 [node name="MeshInstance" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport/Block2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00531578, 0.0891395, 0.0359955 )
 mesh = SubResource( 15 )
-material/0 = SubResource( 16 )
+material/0 = SubResource( 20 )
 
 [node name="Block3" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
-transform = Transform( 0.698987, 0, 0, 0, 0.698987, 0, 0, 0, 0.698987, 9.44875, 6.7593, 8.91557 )
+transform = Transform( 0.698987, 0, 0, 0, 0.698987, 0, 0, 0, 0.698987, 6.44875, 6.7593, 8.91557 )
 mesh = SubResource( 17 )
 material/0 = null
 
@@ -185,7 +188,7 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer/Panel/ScrollContainer"]
-margin_right = 192.0
+margin_right = 388.0
 margin_bottom = 192.0
 columns = 3
 
@@ -203,8 +206,7 @@ __meta__ = {
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Panel/ScrollContainer/GridContainer"]
 visible = false
 material = SubResource( 5 )
-margin_left = 196.0
-margin_right = 388.0
+margin_right = 192.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 192, 192 )
 rect_pivot_offset = Vector2( 96, 96 )
@@ -215,8 +217,7 @@ __meta__ = {
 [node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Panel/ScrollContainer/GridContainer"]
 visible = false
 material = SubResource( 6 )
-margin_left = 392.0
-margin_right = 584.0
+margin_right = 192.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 192, 192 )
 rect_pivot_offset = Vector2( -32, 72 )
@@ -224,9 +225,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="item" type="ColorRect" parent="CanvasLayer/Panel/ScrollContainer/GridContainer"]
-material = SubResource( 7 )
+[node name="viewport_item" type="TextureRect" parent="CanvasLayer/Panel/ScrollContainer/GridContainer"]
+material = SubResource( 21 )
 margin_right = 192.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 192, 192 )
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 7
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="modified_voxel" type="ColorRect" parent="CanvasLayer/Panel/ScrollContainer/GridContainer"]
+material = SubResource( 7 )
+margin_left = 196.0
+margin_right = 388.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 192, 192 )
 rect_pivot_offset = Vector2( -32, 72 )
