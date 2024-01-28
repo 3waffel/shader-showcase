@@ -11,8 +11,8 @@ config_version=4
 [application]
 
 config/name="shader-showcase"
-run/main_scene="res://Main.tscn"
-config/icon="res://icon.png"
+run/main_scene="res://scenes/Main.tscn"
+config/icon="res://assets/images/icon.png"
 
 [global]
 
@@ -64,4 +64,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://assets/default_env.tres"

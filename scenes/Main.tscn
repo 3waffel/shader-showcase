@@ -1,26 +1,27 @@
 [gd_scene load_steps=30 format=2]
 
-[ext_resource path="res://assets/materials/viewport_texture.tres" type="Texture" id=1]
-[ext_resource path="res://assets/shaders/canvas/voxel.shader" type="Shader" id=2]
-[ext_resource path="res://scripts/freelook.gd" type="Script" id=3]
-[ext_resource path="res://assets/shaders/canvas/diff.shader" type="Shader" id=4]
-[ext_resource path="res://assets/shaders/canvas/society.shader" type="Shader" id=5]
-[ext_resource path="res://assets/shaders/modified_voxel.shader" type="Shader" id=6]
-[ext_resource path="res://scripts/toggle_panel.gd" type="Script" id=7]
-[ext_resource path="res://scripts/viewport_resizer.gd" type="Script" id=8]
-[ext_resource path="res://assets/default.theme" type="Theme" id=9]
-[ext_resource path="res://assets/shaders/spatial/mosaic.shader" type="Shader" id=10]
-[ext_resource path="res://assets/shaders/spatial/outline.shader" type="Shader" id=11]
-[ext_resource path="res://assets/materials/pinky/pinky.tres" type="Material" id=12]
-[ext_resource path="res://assets/shaders/spatial/shield.shader" type="Shader" id=13]
-[ext_resource path="res://assets/shaders/canvas/glitch_effect.shader" type="Shader" id=14]
+[ext_resource path="res://scripts/viewport_resizer.gd" type="Script" id=1]
+[ext_resource path="res://scripts/freelook.gd" type="Script" id=2]
+[ext_resource path="res://scripts/toggle_panel.gd" type="Script" id=3]
+[ext_resource path="res://assets/materials/viewport_texture.tres" type="Texture" id=4]
+[ext_resource path="res://assets/materials/pinky/pinky.tres" type="Material" id=5]
+[ext_resource path="res://assets/shaders/canvas/voxel.shader" type="Shader" id=6]
+[ext_resource path="res://assets/shaders/canvas/diff.shader" type="Shader" id=7]
+[ext_resource path="res://assets/shaders/canvas/society.shader" type="Shader" id=8]
+[ext_resource path="res://assets/shaders/modified_voxel.shader" type="Shader" id=9]
+[ext_resource path="res://assets/themes/default.theme" type="Theme" id=10]
+[ext_resource path="res://assets/shaders/canvas/glitch_effect.shader" type="Shader" id=11]
+[ext_resource path="res://assets/shaders/spatial/shield.shader" type="Shader" id=12]
+[ext_resource path="res://assets/shaders/spatial/mosaic.shader" type="Shader" id=13]
+[ext_resource path="res://assets/shaders/spatial/outline.shader" type="Shader" id=14]
 
 [sub_resource type="ShaderMaterial" id=2]
 
 [sub_resource type="PlaneMesh" id=1]
+size = Vector2( 30, 30 )
 
 [sub_resource type="ShaderMaterial" id=18]
-shader = ExtResource( 13 )
+shader = ExtResource( 12 )
 shader_param/speed = Vector2( 0.2, 0.2 )
 shader_param/barrier_color = Color( 0.05, 0.8, 1, 1 )
 shader_param/barrier_force = 1.0
@@ -31,7 +32,7 @@ shader_param/barrier_fog_noise_force = 0.01
 material = SubResource( 18 )
 
 [sub_resource type="ShaderMaterial" id=10]
-shader = ExtResource( 13 )
+shader = ExtResource( 12 )
 shader_param/speed = Vector2( 0.2, 0.2 )
 shader_param/barrier_color = Color( 0.05, 0.8, 1, 1 )
 shader_param/barrier_force = 1.0
@@ -52,7 +53,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="ShaderMaterial" id=19]
-shader = ExtResource( 10 )
+shader = ExtResource( 13 )
 shader_param/size = 20.0
 
 [sub_resource type="ArrayMesh" id=15]
@@ -69,7 +70,7 @@ surfaces/0 = {
 }
 
 [sub_resource type="ShaderMaterial" id=20]
-shader = ExtResource( 11 )
+shader = ExtResource( 14 )
 shader_param/outline_color = Color( 0, 0, 0, 1 )
 shader_param/luma_coef = 0.1
 shader_param/color_coef = 0.1
@@ -77,27 +78,27 @@ shader_param/depth_coef = 0.8
 shader_param/cutoff = 0.2
 
 [sub_resource type="CubeMesh" id=17]
-material = ExtResource( 12 )
+material = ExtResource( 5 )
 
 [sub_resource type="ShaderMaterial" id=8]
-shader = ExtResource( 4 )
+shader = ExtResource( 7 )
 shader_param/resolution = Vector2( 1, 1 )
 shader_param/time = null
 shader_param/mouse = null
 
 [sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 5 )
+shader = ExtResource( 8 )
 shader_param/resolution = Vector2( 1, 1 )
 shader_param/time = null
 shader_param/mouse = null
 
 [sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 2 )
+shader = ExtResource( 6 )
 shader_param/resolution = Vector2( 1, 1 )
 shader_param/mouse = null
 
 [sub_resource type="ShaderMaterial" id=21]
-shader = ExtResource( 14 )
+shader = ExtResource( 11 )
 shader_param/shake_power = 0.03
 shader_param/shake_rate = 0.2
 shader_param/shake_speed = 5.0
@@ -105,7 +106,7 @@ shader_param/shake_block_size = 30.5
 shader_param/shake_color_rate = 0.01
 
 [sub_resource type="ShaderMaterial" id=7]
-shader = ExtResource( 6 )
+shader = ExtResource( 9 )
 shader_param/resolution = Vector2( 1, 1 )
 shader_param/mouse = null
 
@@ -117,7 +118,7 @@ shader_param/mouse = null
 material = SubResource( 2 )
 margin_right = 1024.0
 margin_bottom = 600.0
-script = ExtResource( 8 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -128,40 +129,38 @@ handle_input_locally = false
 render_target_update_mode = 3
 
 [node name="Camera" type="Camera" parent="CanvasLayer/ViewportContainer/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2 )
 current = true
-script = ExtResource( 3 )
+script = ExtResource( 2 )
 
 [node name="Plane" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
 mesh = SubResource( 1 )
 skeleton = NodePath("../../../..")
-material/0 = null
 
-[node name="Block1" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
-transform = Transform( 1.26532, 0, 0, 0, 1.26532, 0, 0, 0, 1.26532, 9.38511, 3.74717, -1.3169 )
+[node name="MosaicBlock" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -3 )
 mesh = SubResource( 11 )
 material/0 = SubResource( 10 )
 
-[node name="MeshInstance" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport/Block1"]
+[node name="MeshInstance" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport/MosaicBlock"]
 mesh = SubResource( 13 )
 material/0 = SubResource( 19 )
 
-[node name="Block2" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
-transform = Transform( 1.60105, 0, 0, 0, 1.60105, 0, 0, 0, 1.60105, 9.45263, 3.84397, 4.18697 )
+[node name="BorderBlock" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -3 )
 mesh = SubResource( 11 )
-material/0 = null
 
-[node name="MeshInstance" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport/Block2"]
+[node name="MeshInstance" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport/BorderBlock"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00531578, 0.0891395, 0.0359955 )
 mesh = SubResource( 15 )
 material/0 = SubResource( 20 )
 
-[node name="Block3" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
-transform = Transform( 0.698987, 0, 0, 0, 0.698987, 0, 0, 0, 0.698987, 6.44875, 6.7593, 8.91557 )
+[node name="HeightBlock" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -6 )
 mesh = SubResource( 17 )
-material/0 = null
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.160784 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -169,10 +168,7 @@ margin_left = 64.0
 margin_top = 32.0
 margin_right = -64.0
 margin_bottom = -40.0
-theme = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource( 10 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/Panel"]
 anchor_left = 0.071
@@ -230,7 +226,7 @@ material = SubResource( 21 )
 margin_right = 192.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 192, 192 )
-texture = ExtResource( 1 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 7
 flip_v = true
@@ -255,13 +251,10 @@ margin_top = 16.0
 margin_right = 120.0
 margin_bottom = 48.0
 focus_mode = 0
-theme = ExtResource( 9 )
+theme = ExtResource( 10 )
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-text = "Show Canvas"
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+text = "Canvas"
+script = ExtResource( 3 )
 
 [connection signal="pressed" from="CanvasLayer/Button" to="CanvasLayer/Button" method="on_button_pressed"]
