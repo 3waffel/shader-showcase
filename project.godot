@@ -54,6 +54,10 @@ freelook_toggle={
  ]
 }
 
+[mono]
+
+project/assembly_name="shader-showcase"
+
 [physics]
 
 common/enable_pause_aware_picking=true
