@@ -1,84 +1,18 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/viewport_resizer.gd" type="Script" id=1]
 [ext_resource path="res://scripts/freelook.gd" type="Script" id=2]
 [ext_resource path="res://scripts/toggle_panel.gd" type="Script" id=3]
-[ext_resource path="res://assets/materials/viewport_texture.tres" type="Texture" id=4]
-[ext_resource path="res://assets/materials/pinky/pinky.tres" type="Material" id=5]
+[ext_resource path="res://assets/textures/viewport_texture.tres" type="Texture" id=4]
+[ext_resource path="res://scenes/Erste.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/shaders/canvas/voxel.shader" type="Shader" id=6]
 [ext_resource path="res://assets/shaders/canvas/diff.shader" type="Shader" id=7]
 [ext_resource path="res://assets/shaders/canvas/society.shader" type="Shader" id=8]
-[ext_resource path="res://assets/shaders/modified_voxel.shader" type="Shader" id=9]
+[ext_resource path="res://assets/shaders/canvas/modified_voxel.shader" type="Shader" id=9]
 [ext_resource path="res://assets/themes/default.theme" type="Theme" id=10]
 [ext_resource path="res://assets/shaders/canvas/glitch_effect.shader" type="Shader" id=11]
-[ext_resource path="res://assets/shaders/spatial/shield.shader" type="Shader" id=12]
-[ext_resource path="res://assets/shaders/spatial/mosaic.shader" type="Shader" id=13]
-[ext_resource path="res://assets/shaders/spatial/outline.shader" type="Shader" id=14]
 
 [sub_resource type="ShaderMaterial" id=2]
-
-[sub_resource type="PlaneMesh" id=1]
-size = Vector2( 30, 30 )
-
-[sub_resource type="ShaderMaterial" id=18]
-shader = ExtResource( 12 )
-shader_param/speed = Vector2( 0.2, 0.2 )
-shader_param/barrier_color = Color( 0.05, 0.8, 1, 1 )
-shader_param/barrier_force = 1.0
-shader_param/barrier_noise_force = 0.3
-shader_param/barrier_fog_noise_force = 0.01
-
-[sub_resource type="CubeMesh" id=11]
-material = SubResource( 18 )
-
-[sub_resource type="ShaderMaterial" id=10]
-shader = ExtResource( 12 )
-shader_param/speed = Vector2( 0.2, 0.2 )
-shader_param/barrier_color = Color( 0.05, 0.8, 1, 1 )
-shader_param/barrier_force = 1.0
-shader_param/barrier_noise_force = 0.3
-shader_param/barrier_fog_noise_force = 0.01
-
-[sub_resource type="ArrayMesh" id=13]
-surfaces/0 = {
-"aabb": AABB( -1.02887, -1.02887, -1.02887, 2.05773, 2.05774, 2.05774 ),
-"array_data": PoolByteArray( 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 63, 0, 0, 127, 64, 0, 0, 0, 0, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 191, 127, 127, 129, 64, 85, 57, 0, 0, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 63, 0, 0, 127, 64, 85, 53, 0, 0, 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 191, 127, 127, 129, 64, 0, 60, 0, 0, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 63, 0, 0, 127, 64, 0, 0, 0, 56, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 191, 127, 127, 129, 64, 85, 57, 0, 56, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 63, 0, 0, 127, 64, 85, 53, 0, 56, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 191, 127, 127, 129, 64, 0, 60, 0, 56, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 63, 127, 0, 127, 127, 85, 53, 0, 0, 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 191, 129, 0, 0, 63, 0, 0, 0, 56, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 191, 127, 0, 127, 127, 85, 57, 0, 0, 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 63, 129, 0, 0, 63, 85, 53, 0, 56, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 63, 127, 0, 127, 127, 85, 53, 0, 56, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 191, 129, 0, 0, 63, 0, 0, 0, 60, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 191, 127, 0, 127, 127, 85, 57, 0, 56, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 63, 129, 0, 0, 63, 85, 53, 0, 60, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 63, 0, 127, 129, 64, 85, 53, 0, 56, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 63, 0, 129, 127, 64, 85, 57, 0, 56, 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 63, 0, 127, 129, 64, 85, 57, 0, 56, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 63, 0, 129, 127, 64, 0, 60, 0, 56, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 191, 0, 127, 129, 64, 85, 53, 0, 60, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 191, 0, 129, 127, 64, 85, 57, 0, 60, 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 191, 0, 127, 129, 64, 85, 57, 0, 60, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 191, 0, 129, 127, 64, 0, 60, 0, 60 ),
-"array_index_data": PoolByteArray( 0, 0, 4, 0, 2, 0, 2, 0, 4, 0, 6, 0, 1, 0, 5, 0, 3, 0, 3, 0, 5, 0, 7, 0, 8, 0, 12, 0, 10, 0, 10, 0, 12, 0, 14, 0, 9, 0, 13, 0, 11, 0, 11, 0, 13, 0, 15, 0, 16, 0, 20, 0, 18, 0, 18, 0, 20, 0, 22, 0, 17, 0, 21, 0, 19, 0, 19, 0, 21, 0, 23, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
-"index_count": 36,
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="ShaderMaterial" id=19]
-shader = ExtResource( 13 )
-shader_param/size = 20.0
-
-[sub_resource type="ArrayMesh" id=15]
-surfaces/0 = {
-"aabb": AABB( -1.02887, -1.02887, -1.02887, 2.05773, 2.05774, 2.05774 ),
-"array_data": PoolByteArray( 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 63, 0, 0, 127, 64, 0, 0, 0, 0, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 191, 127, 127, 129, 64, 85, 57, 0, 0, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 63, 0, 0, 127, 64, 85, 53, 0, 0, 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 191, 127, 127, 129, 64, 0, 60, 0, 0, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 63, 0, 0, 127, 64, 0, 0, 0, 56, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 191, 127, 127, 129, 64, 85, 57, 0, 56, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 63, 0, 0, 127, 64, 85, 53, 0, 56, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 191, 127, 127, 129, 64, 0, 60, 0, 56, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 63, 127, 0, 127, 127, 85, 53, 0, 0, 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 191, 129, 0, 0, 63, 0, 0, 0, 56, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 191, 127, 0, 127, 127, 85, 57, 0, 0, 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 63, 129, 0, 0, 63, 85, 53, 0, 56, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 63, 127, 0, 127, 127, 85, 53, 0, 56, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 191, 129, 0, 0, 63, 0, 0, 0, 60, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 191, 127, 0, 127, 127, 85, 57, 0, 56, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 63, 129, 0, 0, 63, 85, 53, 0, 60, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 63, 0, 127, 129, 64, 85, 53, 0, 56, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 63, 0, 129, 127, 64, 85, 57, 0, 56, 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 63, 0, 127, 129, 64, 85, 57, 0, 56, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 63, 0, 129, 127, 64, 0, 60, 0, 56, 238, 177, 131, 63, 238, 177, 131, 63, 238, 177, 131, 191, 0, 127, 129, 64, 85, 53, 0, 60, 238, 177, 131, 191, 238, 177, 131, 191, 238, 177, 131, 191, 0, 129, 127, 64, 85, 57, 0, 60, 238, 177, 131, 191, 238, 177, 131, 63, 238, 177, 131, 191, 0, 127, 129, 64, 85, 57, 0, 60, 238, 177, 131, 63, 238, 177, 131, 191, 238, 177, 131, 191, 0, 129, 127, 64, 0, 60, 0, 60 ),
-"array_index_data": PoolByteArray( 0, 0, 4, 0, 2, 0, 2, 0, 4, 0, 6, 0, 1, 0, 5, 0, 3, 0, 3, 0, 5, 0, 7, 0, 8, 0, 12, 0, 10, 0, 10, 0, 12, 0, 14, 0, 9, 0, 13, 0, 11, 0, 11, 0, 13, 0, 15, 0, 16, 0, 20, 0, 18, 0, 18, 0, 20, 0, 22, 0, 17, 0, 21, 0, 19, 0, 19, 0, 21, 0, 23, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
-"index_count": 36,
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 24
-}
-
-[sub_resource type="ShaderMaterial" id=20]
-shader = ExtResource( 14 )
-shader_param/outline_color = Color( 0, 0, 0, 1 )
-shader_param/luma_coef = 0.1
-shader_param/color_coef = 0.1
-shader_param/depth_coef = 0.8
-shader_param/cutoff = 0.2
-
-[sub_resource type="CubeMesh" id=17]
-material = ExtResource( 5 )
 
 [sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 7 )
@@ -97,7 +31,7 @@ shader = ExtResource( 6 )
 shader_param/resolution = Vector2( 1, 1 )
 shader_param/mouse = null
 
-[sub_resource type="ShaderMaterial" id=21]
+[sub_resource type="ShaderMaterial" id=9]
 shader = ExtResource( 11 )
 shader_param/shake_power = 0.03
 shader_param/shake_rate = 0.2
@@ -119,9 +53,6 @@ material = SubResource( 2 )
 margin_right = 1024.0
 margin_bottom = 600.0
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Viewport" type="Viewport" parent="CanvasLayer/ViewportContainer"]
 size = Vector2( 1024, 600 )
@@ -133,31 +64,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2 )
 current = true
 script = ExtResource( 2 )
 
-[node name="Plane" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
-mesh = SubResource( 1 )
-skeleton = NodePath("../../../..")
-
-[node name="MosaicBlock" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, -3 )
-mesh = SubResource( 11 )
-material/0 = SubResource( 10 )
-
-[node name="MeshInstance" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport/MosaicBlock"]
-mesh = SubResource( 13 )
-material/0 = SubResource( 19 )
-
-[node name="BorderBlock" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -3 )
-mesh = SubResource( 11 )
-
-[node name="MeshInstance" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport/BorderBlock"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00531578, 0.0891395, 0.0359955 )
-mesh = SubResource( 15 )
-material/0 = SubResource( 20 )
-
-[node name="HeightBlock" type="MeshInstance" parent="CanvasLayer/ViewportContainer/Viewport"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 2, -6 )
-mesh = SubResource( 17 )
+[node name="Spatial" parent="CanvasLayer/ViewportContainer/Viewport" instance=ExtResource( 5 )]
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]
 visible = false
@@ -222,7 +129,7 @@ __meta__ = {
 }
 
 [node name="viewport_item" type="TextureRect" parent="CanvasLayer/Panel/ScrollContainer/GridContainer"]
-material = SubResource( 21 )
+material = SubResource( 9 )
 margin_right = 192.0
 margin_bottom = 192.0
 rect_min_size = Vector2( 192, 192 )
